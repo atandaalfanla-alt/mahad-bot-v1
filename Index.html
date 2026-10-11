@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07110e">
+  <title>MAHAD BOT V1 | WhatsApp Automation</title>
+  <style>
+    :root {
+      --bg: #07110e;
+      --panel: #101d18;
+      --green: #25d366;
+      --text: #f2fff7;
+      --muted: #a1b5a9;
+      --border: #263b30;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 7%;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo { font-size: 20px; font-weight: 800; }
+    .logo span { color: var(--green); }
+
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    a { color: var(--muted); text-decoration: none; }
+    a:hover { color: var(--green); }
+
+    .hero {
+      max-width: 900px;
+      margin: auto;
+      padding: 85px 22px 65px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 6px 14px;
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 7vw, 64px);
+      line-height: 1.1;
+      margin: 22px 0;
+    }
+
+    h1 span { color: var(--green); }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 20px;
+      background: var(--green);
+      color: #06130b;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .button:hover { filter: brightness(1.08); }
+    .secondary { background: #20372b; color: var(--text); }
+
+    section {
+      max-width: 1050px;
+      padding: 35px 22px;
+      margin: auto;
+    }
+
+    .section-title { text-align: center; margin-bottom: 25px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 15px;
+    }
+
+    .card h3 { margin-top: 0; }
+    .muted { color: var(--muted); }
+
+    .dashboard { margin-top: 25px; }
+
+    .status {
+      display: inline-block;
+      color: var(--green);
+      background: #153426;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 13px;
+    }
+
+    #notice {
+      min-height: 26px;
+      color: var(--green);
+      margin-top: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 500px) {
+      header { padding: 18px 5%; }
+      nav { gap: 12px; font-size: 14px; }
+      .hero { padding-top: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">MAHAD <span>BOT V1</span></div>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <span class="tag">YOUR AUTOMATION STARTS HERE</span>
+      <h1>Meet Your New <span>WhatsApp Bot.</span></h1>
+      <p>
+        Welcome to MAHAD BOT V1, a platform designed to make
+        messaging automation easier, smarter, and more accessible.
+      </p>
+      <a class="button" href="#dashboard">Explore Dashboard</a>
+      <a class="button secondary" href="#features">Explore Features</a>
+    </section>
+
+    <section id="features">
+      <div class="section-title">
+        <h2>Powerful Features</h2>
+        <p class="muted">Built for simple and effective automation.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Automated Replies</h3>
+          <p class="muted">Prepare your bot to respond to messages automatically.</p>
+        </article>
+        <article class="card">
+          <h3>Bot Commands</h3>
+          <p class="muted">Plan useful commands and organize bot functions.</p>
+        </article>
+        <article class="card">
+          <h3>Session Management</h3>
+          <p class="muted">A future dashboard for managing authorized bot connections.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="dashboard">
+      <div class="section-title">
+        <h2>Bot Dashboard</h2>
+        <p class="muted">Your first dashboard preview.</p>
+      </div>
+
+      <div class="card dashboard">
+        <p>Bot Name: <strong>MAHAD BOT V1</strong></p>
+        <p>Website Status: <span class="status">Online</span></p>
+        <p>WhatsApp Status: <span id="botStatus" class="status">Not Connected</span></p>
+        <button class="button" id="testButton" type="button">
+          Test Dashboard
+        </button>
+        <p id="notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <h2>About MAHAD BOT V1</h2>
+        <p class="muted">
+          Our goal is to build a reliable automation platform with a
+          user-friendly interface, secure connections, and useful tools.
+          New features will be introduced as development continues.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> MAHAD BOT V1. All rights reserved.</p>
+    <p>Built for smarter automation.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("testButton").addEventListener("click", () => {
+      document.getElementById("notice").textContent =
+        "Success! Your MAHAD BOT V1 dashboard is working.";
+    });
+  </script>
+
+</body>
+  </html>
+                             
